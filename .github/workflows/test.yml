@@ -1,0 +1,49 @@
+# MBROLA NG languages - compiles and tests every language on each pull request
+# Copyright (c) 2026 Darko Milošević
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# The language compiler (langc) lives in the main repository, so it is checked
+# out next to this one and built; the languages of this repository replace the
+# ones of the main repository's submodule. Compiling a language runs its
+# tests.txt through the real engine.
+name: Test languages
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: This repository (the languages under test)
+        uses: actions/checkout@v4
+        with:
+          path: languages-under-test
+
+      - name: The engine (main repository, with the voice catalog)
+        uses: actions/checkout@v4
+        with:
+          repository: Mbrola-NG/Mbrola-NG
+          ref: dev
+          path: engine
+          submodules: recursive
+
+      - name: Use the languages under test
+        run: |
+          rm -rf engine/languages
+          mv languages-under-test engine/languages
+
+      - name: Catalog check (a language without a catalog entry is only a warning)
+        run: python3 engine/tools/check_catalog.py
+
+      - name: Build the language compiler
+        run: |
+          cmake -S engine -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --target langc mbtts -j 4
+
+      - name: Compile and test every language
+        run: ctest --test-dir build --output-on-failure -R '^lang_'

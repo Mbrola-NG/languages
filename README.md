@@ -44,6 +44,10 @@ its submodules and work in `languages/`:
 including words that have caused trouble. A language whose tests fail does not
 compile, and a language that does not compile blocks every build.
 
+Every pull request is compiled and tested on GitHub with the engine of the
+main repository (`.github/workflows/test.yml`), so you see at once whether
+your tests pass.
+
 ## Adding a language (for example `de`)
 
 1. **This repository.** Add `languages/de/` with a `language.txt` and the other
