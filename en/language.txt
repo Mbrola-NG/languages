@@ -7,7 +7,8 @@
 #
 # English (US pronunciation). Voices: us1, us2, us3 (American) and en1
 # (British) - the voices whose symbols differ get a phoneme_map in the voice
-# catalog (catalog/catalog.json), the language data is the same for all.
+# catalog (Resources/catalog/catalog.json), the language data is the same
+# for all.
 # =============================================================================
 
 code          = en

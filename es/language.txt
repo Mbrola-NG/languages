@@ -7,9 +7,9 @@
 #
 # Spanish. The phoneme inventory is the Castilian SAMPA set of the es1
 # voice; the voices that use other symbols (es2, es3, es4, mx1, mx2, vz1)
-# get a phoneme_map in the voice catalog (catalog/catalog.json), so one
-# language serves Spain and Latin America: the Latin American voices map
-# T (c/z) to s (seseo) and L (ll) to their palatal sound (yeísmo).
+# get a phoneme_map in the voice catalog (Resources/catalog/catalog.json),
+# so one language serves Spain and Latin America: the Latin American voices
+# map T (c/z) to s (seseo) and L (ll) to their palatal sound (yeísmo).
 # =============================================================================
 
 code          = es

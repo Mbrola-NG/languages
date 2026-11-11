@@ -8,7 +8,7 @@
 # the five allophones that Spanish has and es1 does not distinguish: the
 # approximants B D G of b d g ("abogado") and the syllable-final s2 and T2
 # ("es", "feliz"). postlex.txt produces them, and the voices that have no
-# separate sound for them map them back (catalog/catalog.json): es1
+# separate sound for them map them back (Resources/catalog/catalog.json): es1
 # "B=b D=d G=g s2=s T2=T". The Venezuelan voice vz1 has its own approximants
 # and its own final s and uses them.
 # The other Spanish voices are mapped to these symbols the same way.
